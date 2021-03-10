@@ -527,7 +527,7 @@ export default {
   }
 
   .content-pane > .content {
-    height: 100vh;
+    height: 95vh;
     overflow-y: scroll;
   }
 
@@ -536,7 +536,7 @@ export default {
   }
 
   .svg-container {
-    height: 100vh;
+    height: 95vh;
     overflow: hidden;
   }
 

@@ -34,7 +34,7 @@ export default {
 <style>
   .custom-header {
     width: 100%;
-    height: 50px;
+    height: 5vh;
     display: flex;
     flex-direction: row;
     border-bottom: 1px solid lightgrey;
@@ -43,8 +43,8 @@ export default {
     font-family: 'Josefin Sans', sans-serif;
     font-size: 36px;
     border-right: 1px solid lightgrey;
-    height: 48px;
-    padding: 8px 20px 0 20px;
+    height: 5vh;
+    padding: 1.5vh 20px 0 20px;
     cursor: pointer;
   }
   .navlink:hover {
