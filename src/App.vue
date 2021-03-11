@@ -119,12 +119,15 @@ export default {
     user-select: none;
   }
 
-  .cd {
+  .cd, .cd-inline {
     background-color: rgb(29, 31, 33);
     color: #c5c8c6;
     padding: 4px 12px 8px 12px;
     border-radius: 4px;
     font-size: 20px;
+  }
+  .cd-inline {
+    padding: 2px 6px 4px 6px;
   }
   hd {
     font-size: 20px;
@@ -142,6 +145,10 @@ export default {
 
   .extnd {
     font-size: 18px;
+  }
+
+  code > a {
+    color: black;
   }
 
   .nice-hr {

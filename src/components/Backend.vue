@@ -16,6 +16,10 @@
               <EntityBlock @clicked="setTab(tabs.Helpers)" :x="1020" :y="400" :shape.sync="Helpers" stroke="skyblue">Helpers</EntityBlock>
               <EntityBlock @clicked="setTab(tabs.Collection)" :x="1000" :y="500" :shape.sync="Collection" stroke="orchid">Collection</EntityBlock>
 
+              <EntityBlock @clicked="setTab(tabs.Contract)" :x="400" :y="250" :shape.sync="Contract" stroke="silver">Contract</EntityBlock>
+              <EntityBlock @clicked="setTab(tabs.Interface)" :x="650" :y="250" :shape.sync="Interface" stroke="tan">Interface</EntityBlock>
+
+
               <g v-if="computed">
                 <Arrow :x1="100 + FormRequest.width" :y1="130" :x2="FormRequest.width + 138" :y2="130"/>
 
@@ -391,6 +395,60 @@
             </Spoiler>
 
           </section>
+
+          <section v-if="current_tab === tabs.Contract" class="section">
+            <div class="heading">
+              Contract
+            </div>
+
+            <Spoiler>
+              <template v-slot:heading>
+                <div class="subheading ru clickable">Описание</div>
+              </template>
+              <div class="ru">
+                Contract - абстрактный класс, предоставляющий базовую реализацию какого-либо функционала.
+                <br>
+                <br>
+              </div>
+            </Spoiler>
+
+            <Spoiler>
+              <template v-slot:heading>
+                <div class="subheading ru clickable">Пример кода</div>
+              </template>
+              <div>
+                <highlightjs language="php" :code="code.Contract" />
+              </div>
+            </Spoiler>
+
+          </section>
+
+          <section v-if="current_tab === tabs.Interface" class="section">
+            <div class="heading">
+              Interface
+            </div>
+
+            <Spoiler>
+              <template v-slot:heading>
+                <div class="subheading ru clickable">Описание</div>
+              </template>
+              <div class="ru">
+                Interface - интерфейс. Описывает то, как себя обязаны вести наследующие его сущности.
+                <br>
+                <br>
+              </div>
+            </Spoiler>
+
+            <Spoiler>
+              <template v-slot:heading>
+                <div class="subheading ru clickable">Пример кода</div>
+              </template>
+              <div>
+                <highlightjs language="php" :code="code.Interface" />
+              </div>
+            </Spoiler>
+
+          </section>
         </div>
       </pane>
     </splitpanes>
@@ -414,6 +472,8 @@ import {
   MAIN_COLLECTION_CODE,
   EXAMPLE_COLLECTION_CODE,
   HELPERS_CODE,
+  CONTRACT_CODE,
+  INTERFACE_CODE,
 } from '../constants/code_examples'
 import 'splitpanes/dist/splitpanes.css';
 import 'highlight.js/styles/tomorrow-night.css';
@@ -444,6 +504,8 @@ export default {
       Exception: null,
       Helpers: null,
       Collection: null,
+      Contract: null,
+      Interface: null,
 
       tabs: {
         FormRequest: 1,
@@ -455,6 +517,8 @@ export default {
         Exception: 7,
         Helpers: 8,
         Collection: 9,
+        Contract: 10,
+        Interface: 11,
       },
       current_tab: 1,
 
@@ -471,6 +535,8 @@ export default {
           example: EXAMPLE_COLLECTION_CODE,
         },
         Helpers: HELPERS_CODE,
+        Contract: CONTRACT_CODE,
+        Interface: INTERFACE_CODE,
       },
       codeinit: false,
     }

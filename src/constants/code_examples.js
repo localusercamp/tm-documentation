@@ -274,6 +274,28 @@ function codegen(int $n, string $alloc = null) : string
 }
 `;
 
+const CONTRACT_CODE =
+`namespace App\\Contracts;
+
+abstract class CustomSerrializer extends ISerrializer
+{
+  final public function serrialize()
+  {
+    // code
+  }
+}`;
+
+const INTERFACE_CODE =
+`namespace App\\Interfaces;
+
+interface ISerrializer
+{
+  public function serrialize()
+  {
+    // code
+  }
+}`;
+
 export {
   FORM_RQUEST_CODE,
   CONTROLLER_CODE,
@@ -285,4 +307,6 @@ export {
   MAIN_COLLECTION_CODE,
   EXAMPLE_COLLECTION_CODE,
   HELPERS_CODE,
+  CONTRACT_CODE,
+  INTERFACE_CODE,
 }
