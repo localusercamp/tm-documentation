@@ -6,9 +6,9 @@
     <div @click="goto('cli')" class="navlink">
       CLI
     </div>
-    <div @click="goto('frontend')" class="navlink">
+    <!-- <div @click="goto('frontend')" class="navlink">
       Frontend
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -41,10 +41,10 @@ export default {
   }
   .navlink {
     font-family: 'Josefin Sans', sans-serif;
-    font-size: 36px;
+    font-size: 3vh;
     border-right: 1px solid lightgrey;
     height: 5vh;
-    padding: 1.5vh 20px 0 20px;
+    padding: 1vh 20px 0 20px;
     cursor: pointer;
   }
   .navlink:hover {

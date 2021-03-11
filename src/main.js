@@ -5,6 +5,7 @@ import App from './App'
 import router from './router'
 
 Vue.config.productionTip = false;
+Vue.config.silent = true;
 
 import hljs from 'highlight.js';
 Vue.use(hljs.vuePlugin);

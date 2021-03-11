@@ -155,7 +155,7 @@
                       <li>Collection</li>
                       <li>Entity</li>
                       <li>Helpers</li>
-                      <li>Model (желательно использовать в Task)</li>
+                      <li>Model</li>
                     </ul>
                   <li>Action <b>не может</b> использовать другой Action.</li>
                   <li>Action <b>не может</b> реализовывать Contract.</li>
@@ -504,92 +504,3 @@ export default {
   }
 }
 </script>
-
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;500&display=swap');
-  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
-
-  .splitpanes__splitter {
-    background-color: black;
-    border-right: 1px solid lightgrey !important;
-    border-left: 1px solid lightgrey !important;
-    padding: 0 3px 0 3px;
-  }
-
-  .scheme-pane {
-    background-color:rgb(230, 230, 230);
-    cursor: move;
-  }
-
-  .content-pane {
-    background-color: #fff !important;
-    font-family: 'Josefin Sans', sans-serif;
-  }
-
-  .content-pane > .content {
-    height: 95vh;
-    overflow-y: scroll;
-  }
-
-  .content::-webkit-scrollbar {
-    display: none;
-  }
-
-  .svg-container {
-    height: 95vh;
-    overflow: hidden;
-  }
-
-  .block-text {
-    stroke: none;
-    font-family: 'Josefin Sans', sans-serif;
-    fill: black;
-    user-select: none;
-  }
-
-  .heading {
-    font-size: 34px;
-    margin-bottom: 20px;
-  }
-
-  .subheading {
-    font-size: 24px;
-    margin-bottom: 10px;
-  }
-
-  cd {
-    background-color: rgb(29, 31, 33);
-    color: #c5c8c6;
-    padding: 2px 4px 2px 4px;
-    border-radius: 4px;
-  }
-
-  cd > cl {
-    color: #81a2be;
-  }
-
-  .ru {
-    font-family: 'Noto Sans', sans-serif;
-  }
-
-  .section {
-    padding: 16px;
-  }
-
-  .clickable {
-    cursor: pointer;
-  }
-
-  .d-inline-block {
-    display: inline-block;
-  }
-
-  .hljs {
-    border-radius: 4px;
-    padding-left: 10px;
-  }
-
-  body {
-    margin: 0;
-  }
-</style>
