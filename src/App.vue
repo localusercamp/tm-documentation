@@ -56,7 +56,7 @@ export default {
     background-image: url(https://picsum.photos/1280/1440);
     background-repeat: no-repeat;
     background-size: cover;
-    height: 95vh;
+    height: 95vh !important;
   }
 
   .content-pane > .content {
