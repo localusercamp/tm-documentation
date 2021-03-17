@@ -82,7 +82,7 @@
                     <code>
                       <div class="cd"><sy>php artisan make:</sy><cs>interface</cs> <pr>Interface</pr></div>
                       <br>
-                      <div class="cd"><pr>Interface</pr> - Название класса (поддерживает указание <sy>namespace</sy>)</div>
+                      <div class="cd"><pr>Interface</pr> - Название интерфейса (поддерживает указание <sy>namespace</sy>)</div>
                     </code>
                     <br><br>
                   </div>
@@ -112,6 +112,32 @@
                     </code>
                   </div>
                 </Spoiler>
+
+                <Spoiler hide tab>
+                  <template v-slot:heading>
+                    <div class="subheading ru clickable">make:builder</div>
+                  </template>
+                  <div class="ru extnd">
+                    Создает новый Builder <br><br>
+                    <code>
+                      <div class="cd">
+                        <sy>php artisan make:</sy><cs>builder</cs> <pr>CustomBuilder</pr> <pr>-m Model</pr>
+                      </div>
+                      <br>
+                      <div class="cd">
+                        <pr>CustomBuilder</pr> - Название класса (поддерживает указание <sy>namespace</sy>)
+                      </div>
+                      <br>
+                      <div class="cd">
+                        <pr>-m Model</pr> - Имя модели в папке Models (опционально)
+                        <br>
+                        <hr class="nice-hr">
+                        Если указан, то в существующей модели будет создана функция для возвращения CustomBuilder при конструировании нового запроса
+                      </div>
+                    </code>
+                  </div>
+                </Spoiler>
+
               </template>
             </Spoiler>
           </section>
