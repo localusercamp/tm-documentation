@@ -15,6 +15,8 @@
               <EntityBlock @clicked="setTab(tabs.Exception)" :x="1000" :y="300" :shape.sync="Exception" stroke="orange">Exception</EntityBlock>
               <EntityBlock @clicked="setTab(tabs.Helpers)" :x="1020" :y="400" :shape.sync="Helpers" stroke="skyblue">Helpers</EntityBlock>
               <EntityBlock @clicked="setTab(tabs.Collection)" :x="1000" :y="500" :shape.sync="Collection" stroke="orchid">Collection</EntityBlock>
+              <EntityBlock @clicked="setTab(tabs.Builder)" :x="1020" :y="600" :shape.sync="Collection" stroke="cadetblue">Builder</EntityBlock>
+
 
               <EntityBlock @clicked="setTab(tabs.Contract)" :x="400" :y="250" :shape.sync="Contract" stroke="silver">Contract</EntityBlock>
               <EntityBlock @clicked="setTab(tabs.Interface)" :x="650" :y="250" :shape.sync="Interface" stroke="tan">Interface</EntityBlock>
@@ -31,20 +33,21 @@
                 <Arrow :x1="940 + Task.width/2" :y1="50" :x2="940 + Task.width/2" :y2="80"/>
                 <Arrow :x1="1100 + Model.width/2" :y1="50" :x2="1100 + Model.width/2" :y2="80"/>
 
-                <Arrow :x1="940 + Task.width" :y1="130" :x2="980 + Task.width" :y2="130"/>
+                <Arrow :x1="940 + Task.width" :y1="130" :x2="975 + Task.width" :y2="130"/>
 
                 <Arrow :x1="900" :y1="230" :x2="1010" :y2="230"/>
                 <Arrow :x1="900" :y1="330" :x2="980" :y2="330"/>
                 <Arrow :x1="900" :y1="430" :x2="1000" :y2="430"/>
                 <Arrow :x1="900" :y1="530" :x2="980" :y2="530"/>
-                <Arrow nomarker :x1="900" :y1="530" :x2="900" :y2="130"/>
-                <Arrow nomarker :x1="900" :y1="130" :x2="940" :y2="130"/>
+                <Arrow :x1="900" :y1="630" :x2="1000" :y2="630"/>
+                <Arrow nomarker :x1="900" :y1="630" :x2="900" :y2="130"/>
+                <Arrow nomarker :x1="779" :y1="130" :x2="940" :y2="130"/>
 
                 <Arrow :x1="1140 + Model.width" :y1="230" :x2="1045 + Model.width" :y2="230"/>
-                <Arrow :x1="1140 + Model.width" :y1="330" :x2="1075+ Model.width" :y2="330"/>
-                <Arrow :x1="1140 + Model.width" :y1="430" :x2="1060+ Model.width" :y2="430"/>
+                <Arrow :x1="1140 + Model.width" :y1="430" :x2="1065+ Model.width" :y2="430"/>
                 <Arrow :x1="1140 + Model.width" :y1="530" :x2="1080+ Model.width" :y2="530"/>
-                <Arrow nomarker :x1="1140 + Model.width" :y1="530" :x2="1140 + Model.width" :y2="130"/>
+                <Arrow :x1="1140 + Model.width" :y1="630" :x2="1055+ Model.width" :y2="630"/>
+                <Arrow nomarker :x1="1140 + Model.width" :y1="630" :x2="1140 + Model.width" :y2="130"/>
                 <Arrow nomarker :x1="1140 + Model.width" :y1="130" :x2="1140 + Model.width" :y2="130"/>
 
                 <Arrow nomarker :x1="1140 + Model.width" :y1="130" :x2="1100 + Model.width" :y2="130"/>
@@ -349,7 +352,8 @@
                 <b>Правила:</b>
                 <ul>
                   <li>Collection <b>может</b> использовать Model.</li>
-                  <li>Collection <b>может</b> использовать Entity.</li>
+                  <li>Collection <b>может</b> использовать Helpers.</li>
+                  <li>Collection <b>может</b> использовать Exception.</li>
                   <li>Collection <b>может</b> использовать другую Collection.</li>
                   <li>Collection <b>может</b> реализовывать Contract.</li>
                   <li>Collection <b>не может</b> использовать остальные сущности.</li>
@@ -364,6 +368,42 @@
               <div>
                 <highlightjs language="php" :code="code.Collection.main" />
                 <highlightjs language="php" :code="code.Collection.example" />
+              </div>
+            </Spoiler>
+
+          </section>
+
+          <section v-if="current_tab === tabs.Builder" class="section">
+            <div class="heading">
+              Builder
+            </div>
+
+            <Spoiler>
+              <template v-slot:heading>
+                <div class="subheading ru clickable">Описание</div>
+              </template>
+              <div class="ru">
+                Builder инкапсулирует чейнинг EloquentBuilder для конкретной модели.
+                <br>
+                <br>
+                <b>Правила:</b>
+                <ul>
+                  <li>Builder <b>может</b> использовать Model.</li>
+                  <li>Builder <b>может</b> использовать Helpers.</li>
+                  <li>Builder <b>может</b> использовать Exception.</li>
+                  <li>Builder <b>может</b> реализовывать Contract.</li>
+                  <li>Builder <b>не может</b> использовать остальные сущности.</li>
+                </ul>
+              </div>
+            </Spoiler>
+
+            <Spoiler>
+              <template v-slot:heading>
+                <div class="subheading ru clickable">Пример кода</div>
+              </template>
+              <div>
+                <highlightjs language="php" :code="code.Builder.main" />
+                <highlightjs language="php" :code="code.Builder.example" />
               </div>
             </Spoiler>
 
@@ -471,6 +511,8 @@ import {
   EXCEPTION_CODE,
   MAIN_COLLECTION_CODE,
   EXAMPLE_COLLECTION_CODE,
+  MAIN_BUILDER_CODE,
+  EXAMPLE_BUILDER_CODE,
   HELPERS_CODE,
   CONTRACT_CODE,
   INTERFACE_CODE,
@@ -517,8 +559,9 @@ export default {
         Exception: 7,
         Helpers: 8,
         Collection: 9,
-        Contract: 10,
-        Interface: 11,
+        Builder: 10,
+        Contract: 11,
+        Interface: 12,
       },
       current_tab: 1,
 
@@ -533,6 +576,10 @@ export default {
         Collection: {
           main: MAIN_COLLECTION_CODE,
           example: EXAMPLE_COLLECTION_CODE,
+        },
+        Builder: {
+          main: MAIN_BUILDER_CODE,
+          example: EXAMPLE_BUILDER_CODE,
         },
         Helpers: HELPERS_CODE,
         Contract: CONTRACT_CODE,

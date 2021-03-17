@@ -249,6 +249,26 @@ $chats   = Chat::get();
 $chats->loadUnreadMessagesCount($user_id);
 `;
 
+const MAIN_BUILDER_CODE =
+`namespace App\\QueryBuilders;
+
+use App\\Contracts\\CustomQueryBuilder;
+
+class LocationQueryBuilder extends CustomQueryBuilder
+{
+  /**
+   * Получает записи 15-дневной давности
+   */
+  public function forTheLast15Days(): self
+  {
+    $this->whereDate('created_at', '>', Carbon::now()->subDays(15));
+
+    return $this;
+  }
+}`;
+
+const EXAMPLE_BUILDER_CODE = `$location_list = Location::forTheLast15Days()->get();`;
+
 const HELPERS_CODE =
 `/**
 * Проверяет может ли массив быть передан в \`sync()\`
@@ -306,6 +326,8 @@ export {
   EXCEPTION_CODE,
   MAIN_COLLECTION_CODE,
   EXAMPLE_COLLECTION_CODE,
+  MAIN_BUILDER_CODE,
+  EXAMPLE_BUILDER_CODE,
   HELPERS_CODE,
   CONTRACT_CODE,
   INTERFACE_CODE,

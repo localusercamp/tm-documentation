@@ -115,24 +115,24 @@
 
                 <Spoiler hide tab>
                   <template v-slot:heading>
-                    <div class="subheading ru clickable">make:builder</div>
+                    <div class="subheading ru clickable">make:query-builder</div>
                   </template>
                   <div class="ru extnd">
-                    Создает новый Builder <br><br>
+                    Создает новый QueryBuilder <br><br>
                     <code>
                       <div class="cd">
-                        <sy>php artisan make:</sy><cs>builder</cs> <pr>CustomBuilder</pr> <pr>-m Model</pr>
+                        <sy>php artisan make:</sy><cs>query-builder</cs> <pr>CustomQueryBuilder</pr> <pr>-m Model</pr>
                       </div>
                       <br>
                       <div class="cd">
-                        <pr>CustomBuilder</pr> - Название класса (поддерживает указание <sy>namespace</sy>)
+                        <pr>CustomQueryBuilder</pr> - Название класса (поддерживает указание <sy>namespace</sy>)
                       </div>
                       <br>
                       <div class="cd">
                         <pr>-m Model</pr> - Имя модели в папке Models (опционально)
                         <br>
                         <hr class="nice-hr">
-                        Если указан, то в существующей модели будет создана функция для возвращения CustomBuilder при конструировании нового запроса
+                        Если указан, то в существующей модели будет создана функция для возвращения CustomQueryBuilder при конструировании нового запроса
                       </div>
                     </code>
                   </div>
