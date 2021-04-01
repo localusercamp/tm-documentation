@@ -3,15 +3,8 @@ const FORM_RQUEST_CODE =
 
 use Illuminate\\Foundation\\Http\\FormRequest;
 
-use App\\Models\\Product;
-
 class CreateProductRequest extends FormRequest
 {
-  public function authorize() : bool
-  {
-    return auth()->user()->can('create', Product::class);
-  }
-
   public function rules() : array
   {
     return [
@@ -28,11 +21,11 @@ const CONTROLLER_CODE =
 
 use Illuminate\\Http\\JsonResponse;
 
+use Exception;
+
 use App\\Http\\Controllers\\Controller;
-
-use App\\Actions\\Product\\CreateProductAction;
-
 use App\\Http\\Requests\\Product\\CreateProductRequest;
+use App\\Actions\\Product\\CreateProductAction;
 
 class ProductController extends Controller
 {
@@ -44,8 +37,15 @@ class ProductController extends Controller
     $price       = $input['price'];
     $tags        = $input['tags'];
 
-    $output = CreateProductAction::run($title, $description, $price, $tags);
-    return response()->json($output, 200);
+    try {
+      $action = new CreateProductAction();
+      $output = $action->run($title, $description, $price, $tags);
+    }
+    catch(Exception $e) {
+      // return exception render
+    }
+
+    return response()->json($output);
   }
 }`;
 
@@ -58,17 +58,30 @@ use App\\Tasks\\{
   ConstructJwtTask,
   GetCurrentUserTask,
 };
+use App\\Models\\User;
+use App\\Exceptions\\AlreadyAuthorizedException;
+use App\\Exceptions\\ForbiddenException;
 
 class SigninAction extends Action
 {
-  public static function run(string $phone, string $password) : array
+  /**
+   * Данный метод можно не определять, если не нужно проверять доступ пользователя.
+   * Метод вызовется автоматически при создании нового экземпляра SigninAction.
+   */
+  public function authorize() : ?User
+  {
+    $user = auth()->user();
+    if ($user->alreadyAuthorized()) throw new AlreadyAuthorizedException();
+    if ($user->cant('signin')) throw new ForbiddenException(); // Policy check
+    return $user;
+  }
+
+  public function run(string $phone, string $password) : array
   {
     $token = AuthorizeUserTask::run($phone, $password);
     $jwt   = ConstructJwtTask::run($token);
 
-    $user  = GetCurrentUserTask::run();
-
-    return compact('jwt', 'user');
+    return compact('jwt', $this->user);
   }
 }`;
 

@@ -151,6 +151,13 @@ export default {
     color: black;
   }
 
+  ul {
+    margin: 0 0 10px 0;
+  }
+  li {
+    margin: 5px 0 0 0;
+  }
+
   .nice-hr {
     margin: 8px 2px 8px 2px;
     border-top: none;
