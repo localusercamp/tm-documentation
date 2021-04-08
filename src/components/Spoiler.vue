@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div :class="['noselect', {'plate-spoiler': plate}]">
     <div @click="show = !show">
       <img src="../assets/icon-arrow.svg" width="16" height="16" :class="['icon-arrow', 'clickable', {'rotate' : show}]">
       <div class="d-inline-block noselect">
@@ -19,8 +19,9 @@ export default {
   name: "Spoiler",
 
   props: {
-    hide: { type: Boolean, default: false },
-    tab: { type: Boolean, default: false },
+    hide:  { type: Boolean, default: false },
+    tab:   { type: Boolean, default: false },
+    plate: { type: Boolean, default: false },
   },
 
   data() {
@@ -47,6 +48,7 @@ export default {
   .icon-arrow {
     transition: all ease-in-out .2s;
     margin-right: 10px;
+    margin-top: -10px;
   }
 
   .rotate {
@@ -55,5 +57,18 @@ export default {
 
   .tab {
     padding-left:30px;
+  }
+
+  .plate-spoiler {
+    width: 100%;
+    border-bottom: 1px solid lightgray;
+    padding: 16px 0 16px 24px;
+
+
+  }
+
+  .plate-spoiler .subheading {
+    font-size: 32px;
+    margin: 0;
   }
 </style>

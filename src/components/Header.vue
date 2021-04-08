@@ -1,32 +1,50 @@
 <template>
   <div class="custom-header">
-    <div @click="goto('backend')" class="navlink">
+    <div @click="goto(TAB.BACKEND)" class="navlink" :style="tab === TAB.BACKEND ? {color:'#30B8BB'} : {}">
       Backend
     </div>
-    <div @click="goto('cli')" class="navlink">
+    <div @click="goto(TAB.CLI)" class="navlink" :style="tab === TAB.CLI ? {color:'#30B8BB'} : {}">
       CLI
     </div>
-    <!-- <div @click="goto('frontend')" class="navlink">
+    <div @click="goto(TAB.FRONTEND)" class="navlink" :style="tab === TAB.FRONTEND ? {color:'#30B8BB'} : {}">
       Frontend
-    </div> -->
+    </div>
   </div>
 </template>
 
 <script>
+
+const TAB = {
+  BACKEND: 'backend',
+  CLI: 'cli',
+  FRONTEND: 'frontend',
+};
+
 export default {
   name: "Header",
 
   data() {
     return {
       show: true,
-      tab: 'backend',
+      tab: TAB.BACKEND,
+      TAB,
     }
   },
 
   methods: {
-    goto(route_name) {
-      this.$router.push(route_name);
+    goto(tab) {
+      this.tab = tab;
+      this.$router.push(tab);
     }
+  },
+
+  created() {
+    if (window.location.hash.includes(TAB.BACKEND))
+      this.tab = TAB.BACKEND;
+    if (window.location.hash.includes(TAB.CLI))
+      this.tab = TAB.CLI;
+    if (window.location.hash.includes(TAB.FRONTEND))
+      this.tab = TAB.FRONTEND;
   }
 }
 </script>
@@ -44,7 +62,7 @@ export default {
     font-size: 3vh;
     border-right: 1px solid lightgrey;
     height: 5vh;
-    padding: 1vh 20px 0 20px;
+    padding: 0.5vh 20px 0 20px;
     cursor: pointer;
   }
   .navlink:hover {

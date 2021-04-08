@@ -162,4 +162,32 @@ export default {
     margin: 8px 2px 8px 2px;
     border-top: none;
   }
+
+  .example-area {
+    padding: 32px;
+    background-color: rgb(233, 233, 233);
+  }
+
+  .example-code-area {
+    background-color: rgb(233, 233, 233);
+  }
+
+  .mb-0 {
+    margin-bottom: 0px;
+  }
+
+  pre {
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    margin: 0;
+  }
+
+  a {
+    color: #30B8BB;
+    cursor: pointer;
+  }
+  a:hover {
+    color: #1c6b6d;
+  }
 </style>
